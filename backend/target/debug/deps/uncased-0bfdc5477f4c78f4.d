@@ -1,0 +1,11 @@
+C:\Users\xiang\github\Connect_4_Rust\backend\target\debug\deps\libuncased-0bfdc5477f4c78f4.rmeta: C:\Users\xiang\.cargo\registry\src\index.crates.io-6f17d22bba15001f\uncased-0.9.10\src\lib.rs C:\Users\xiang\.cargo\registry\src\index.crates.io-6f17d22bba15001f\uncased-0.9.10\src\serde.rs C:\Users\xiang\.cargo\registry\src\index.crates.io-6f17d22bba15001f\uncased-0.9.10\src\owned.rs C:\Users\xiang\.cargo\registry\src\index.crates.io-6f17d22bba15001f\uncased-0.9.10\src\borrowed.rs C:\Users\xiang\.cargo\registry\src\index.crates.io-6f17d22bba15001f\uncased-0.9.10\src\as_uncased.rs
+
+C:\Users\xiang\github\Connect_4_Rust\backend\target\debug\deps\libuncased-0bfdc5477f4c78f4.rlib: C:\Users\xiang\.cargo\registry\src\index.crates.io-6f17d22bba15001f\uncased-0.9.10\src\lib.rs C:\Users\xiang\.cargo\registry\src\index.crates.io-6f17d22bba15001f\uncased-0.9.10\src\serde.rs C:\Users\xiang\.cargo\registry\src\index.crates.io-6f17d22bba15001f\uncased-0.9.10\src\owned.rs C:\Users\xiang\.cargo\registry\src\index.crates.io-6f17d22bba15001f\uncased-0.9.10\src\borrowed.rs C:\Users\xiang\.cargo\registry\src\index.crates.io-6f17d22bba15001f\uncased-0.9.10\src\as_uncased.rs
+
+C:\Users\xiang\github\Connect_4_Rust\backend\target\debug\deps\uncased-0bfdc5477f4c78f4.d: C:\Users\xiang\.cargo\registry\src\index.crates.io-6f17d22bba15001f\uncased-0.9.10\src\lib.rs C:\Users\xiang\.cargo\registry\src\index.crates.io-6f17d22bba15001f\uncased-0.9.10\src\serde.rs C:\Users\xiang\.cargo\registry\src\index.crates.io-6f17d22bba15001f\uncased-0.9.10\src\owned.rs C:\Users\xiang\.cargo\registry\src\index.crates.io-6f17d22bba15001f\uncased-0.9.10\src\borrowed.rs C:\Users\xiang\.cargo\registry\src\index.crates.io-6f17d22bba15001f\uncased-0.9.10\src\as_uncased.rs
+
+C:\Users\xiang\.cargo\registry\src\index.crates.io-6f17d22bba15001f\uncased-0.9.10\src\lib.rs:
+C:\Users\xiang\.cargo\registry\src\index.crates.io-6f17d22bba15001f\uncased-0.9.10\src\serde.rs:
+C:\Users\xiang\.cargo\registry\src\index.crates.io-6f17d22bba15001f\uncased-0.9.10\src\owned.rs:
+C:\Users\xiang\.cargo\registry\src\index.crates.io-6f17d22bba15001f\uncased-0.9.10\src\borrowed.rs:
+C:\Users\xiang\.cargo\registry\src\index.crates.io-6f17d22bba15001f\uncased-0.9.10\src\as_uncased.rs:

@@ -1,0 +1,10 @@
+C:\Users\xiang\github\Connect_4_Rust\frontend\target\wasm32-unknown-unknown\debug\deps\libserde_wasm_bindgen-02d61aba4b2d7fc8.rmeta: C:\Users\xiang\.cargo\registry\src\index.crates.io-6f17d22bba15001f\serde-wasm-bindgen-0.3.1\src\lib.rs C:\Users\xiang\.cargo\registry\src\index.crates.io-6f17d22bba15001f\serde-wasm-bindgen-0.3.1\src\de.rs C:\Users\xiang\.cargo\registry\src\index.crates.io-6f17d22bba15001f\serde-wasm-bindgen-0.3.1\src\error.rs C:\Users\xiang\.cargo\registry\src\index.crates.io-6f17d22bba15001f\serde-wasm-bindgen-0.3.1\src\ser.rs
+
+C:\Users\xiang\github\Connect_4_Rust\frontend\target\wasm32-unknown-unknown\debug\deps\libserde_wasm_bindgen-02d61aba4b2d7fc8.rlib: C:\Users\xiang\.cargo\registry\src\index.crates.io-6f17d22bba15001f\serde-wasm-bindgen-0.3.1\src\lib.rs C:\Users\xiang\.cargo\registry\src\index.crates.io-6f17d22bba15001f\serde-wasm-bindgen-0.3.1\src\de.rs C:\Users\xiang\.cargo\registry\src\index.crates.io-6f17d22bba15001f\serde-wasm-bindgen-0.3.1\src\error.rs C:\Users\xiang\.cargo\registry\src\index.crates.io-6f17d22bba15001f\serde-wasm-bindgen-0.3.1\src\ser.rs
+
+C:\Users\xiang\github\Connect_4_Rust\frontend\target\wasm32-unknown-unknown\debug\deps\serde_wasm_bindgen-02d61aba4b2d7fc8.d: C:\Users\xiang\.cargo\registry\src\index.crates.io-6f17d22bba15001f\serde-wasm-bindgen-0.3.1\src\lib.rs C:\Users\xiang\.cargo\registry\src\index.crates.io-6f17d22bba15001f\serde-wasm-bindgen-0.3.1\src\de.rs C:\Users\xiang\.cargo\registry\src\index.crates.io-6f17d22bba15001f\serde-wasm-bindgen-0.3.1\src\error.rs C:\Users\xiang\.cargo\registry\src\index.crates.io-6f17d22bba15001f\serde-wasm-bindgen-0.3.1\src\ser.rs
+
+C:\Users\xiang\.cargo\registry\src\index.crates.io-6f17d22bba15001f\serde-wasm-bindgen-0.3.1\src\lib.rs:
+C:\Users\xiang\.cargo\registry\src\index.crates.io-6f17d22bba15001f\serde-wasm-bindgen-0.3.1\src\de.rs:
+C:\Users\xiang\.cargo\registry\src\index.crates.io-6f17d22bba15001f\serde-wasm-bindgen-0.3.1\src\error.rs:
+C:\Users\xiang\.cargo\registry\src\index.crates.io-6f17d22bba15001f\serde-wasm-bindgen-0.3.1\src\ser.rs:
