@@ -1,4 +1,6 @@
 use std::cmp::min;
+use rand::Rng;
+use rand::seq::SliceRandom;
 
 #[derive(Clone, Debug, PartialEq)]
 pub struct C4State {
@@ -293,5 +295,147 @@ pub fn puff_connect4(game_board: Vec<Vec<i64>>, difficulty_level: String) -> i64
 // return the T(3) or O(4) as 3rd char, separated by ,
 // "1,3" means 1st column and T
 pub fn puff_toot(game_board: Vec<Vec<i64>>, difficulty_level: String) -> String {
-    "1,3".to_string()
+    let (best_col, best_piece) = match difficulty_level.as_str() {
+        "Hard" => find_best_move_hard(&game_board),
+        _ => find_best_move_easy(&game_board),
+    };
+    format!("{},{}", best_col, best_piece)
+}
+
+fn find_best_move_hard(game_board: &Vec<Vec<i64>>) -> (usize, i64) {
+    let cols = game_board[0].len();
+    let mut candidates = Vec::new();
+
+    // Check for immediate wins or necessary blocks
+    for col in 0..cols {
+        if let Some((new_board, row)) = simulate_move(game_board, col, 3) {  // Try placing 'T' (3)
+            if check_for_win(&new_board, row, col, 3) {
+                return (col, 3);  // Win with 'T'
+            }
+            candidates.push((col, 3));
+        }
+        if let Some((new_board, row)) = simulate_move(game_board, col, 4) {  // Try placing 'O' (4)
+            if check_for_win(&new_board, row, col, 4) {
+                return (col, 4);  // Win with 'O'
+            }
+            candidates.push((col, 4));
+        }
+    }
+
+    // If no immediate wins or blocks, choose a semi-random move from valid candidates
+    if !candidates.is_empty() {
+        let idx = rand::random::<usize>() % candidates.len();
+        return candidates[idx];
+    }
+
+    // Default to first column with 'T' if no candidates (unlikely, but safe fallback)
+    (0, 3)
+}
+
+fn simulate_move(board: &Vec<Vec<i64>>, col: usize, disc: i64) -> Option<(Vec<Vec<i64>>, usize)> {
+    let mut new_board = board.clone();
+    for row in 0..board.len() {
+        if new_board[row][col] == 0 {
+            new_board[row][col] = disc;
+            return Some((new_board, row));
+        }
+    }
+    None
+}
+
+fn check_for_win(board: &Vec<Vec<i64>>, row: usize, col: usize, disc: i64) -> bool {
+    // Check horizontally
+    let mut count = 1;
+    // Check to the left
+    let mut j = col as i32 - 1;
+    while j >= 0 && board[row][j as usize] == disc {
+        count += 1;
+        j -= 1;
+    }
+    // Check to the right
+    j = col as i32 + 1;
+    while j < board[0].len() as i32 && board[row][j as usize] == disc {
+        count += 1;
+        j += 1;
+    }
+    if count >= 4 {
+        return true;
+    }
+
+    // Check vertically (only need to check downwards)
+    count = 1;
+    let mut i = row as i32 + 1;
+    while i < board.len() as i32 && board[i as usize][col] == disc {
+        count += 1;
+        i += 1;
+    }
+    if count >= 4 {
+        return true;
+    }
+
+    // Check diagonal from top-left to bottom-right
+    count = 1;
+    i = row as i32 - 1;
+    j = col as i32 - 1;
+    while i >= 0 && j >= 0 && board[i as usize][j as usize] == disc {
+        count += 1;
+        i -= 1;
+        j -= 1;
+    }
+    i = row as i32 + 1;
+    j = col as i32 + 1;
+    while i < board.len() as i32 && j < board[0].len() as i32 && board[i as usize][j as usize] == disc {
+        count += 1;
+        i += 1;
+        j += 1;
+    }
+    if count >= 4 {
+        return true;
+    }
+
+    // Check diagonal from bottom-left to top-right
+    count = 1;
+    i = row as i32 + 1;
+    j = col as i32 - 1;
+    while i < board.len() as i32 && j >= 0 && board[i as usize][j as usize] == disc {
+        count += 1;
+        i += 1;
+        j -= 1;
+    }
+    i = row as i32 - 1;
+    j = col as i32 + 1;
+    while i >= 0 && j < board[0].len() as i32 && board[i as usize][j as usize] == disc {
+        count += 1;
+        i -= 1;
+        j += 1;
+    }
+    if count >= 4 {
+        return true;
+    }
+
+    false
+}
+
+fn find_best_move_easy(game_board: &Vec<Vec<i64>>) -> (usize, i64) {
+    let mut rng = rand::thread_rng();
+    let mut available_moves = Vec::new();
+
+    // Collect all available moves
+    for (col, column) in game_board.iter().enumerate() {
+        for (row, &cell) in column.iter().enumerate() {
+            if cell == 0 {  // Check if the spot is empty
+                available_moves.push((col, row));
+            }
+        }
+    }
+
+    // Choose a random available move if any
+    if let Some(&(col, row)) = available_moves.choose(&mut rng) {
+        // Choose 'T' (3) or 'O' (4) randomly
+        let piece = if rng.gen_bool(0.5) { 3 } else { 4 };
+        return (col, piece);
+    }
+
+    // Fallback if no available moves (should not happen in a normal game)
+    (0, 3)  // Return the first column and 'T' if no moves are available
 }
