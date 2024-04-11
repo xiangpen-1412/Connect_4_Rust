@@ -21,8 +21,8 @@ version = "0.3.69"
 features = [
     "CanvasRenderingContext2d",
     "HtmlCanvasElement",
-    "DomRect",
     "HtmlSelectElement",
+    "DomRect",
     "Headers",
     "Request",
     "RequestInit",

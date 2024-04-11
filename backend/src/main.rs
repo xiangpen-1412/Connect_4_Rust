@@ -3,8 +3,8 @@
 use rocket::http::Method;
 use rocket::{post, routes};
 use rocket::serde::json::Json;
-use crate::model::{ColResponse, GameResult};
-use crate::utils::puff_connect4;
+use crate::model::{ColResponse, GameResult, TootResponse};
+use crate::utils::{puff_connect4, puff_toot};
 use rocket_cors::{AllowedOrigins, AllowedHeaders, CorsOptions, Cors};
 
 mod model;
@@ -16,6 +16,14 @@ fn connect_puff_move(game_board_state: Json<GameResult>) -> Json<ColResponse> {
     println!("Received game board state: {:?}", game_board);
     let column = puff_connect4(game_board, difficulty_level);
     Json(ColResponse { column })
+}
+
+#[post("/puff_toot_step", format = "json", data = "<game_board_state>")]
+fn connect_puff_toot_move(game_board_state: Json<GameResult>) -> Json<TootResponse> {
+    let GameResult { game_board, difficulty_level } = game_board_state.into_inner();
+    println!("Received game board state: {:?}", game_board);
+    let move_step = puff_toot(game_board, difficulty_level);
+    Json(TootResponse { move_step })
 }
 
 fn make_cors() -> Cors {
@@ -39,6 +47,6 @@ fn make_cors() -> Cors {
 
 #[rocket::launch]
 fn rocket() -> _ {
-    rocket::build().mount("/api", routes![connect_puff_move]).attach(make_cors())
+    rocket::build().mount("/api", routes![connect_puff_move, connect_puff_toot_move]).attach(make_cors())
 }
 

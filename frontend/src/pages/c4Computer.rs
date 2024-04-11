@@ -23,27 +23,6 @@ pub struct GameBoardProps {
     pub player_name: String,
 }
 
-// pub fn alphaPuff_turn(game_board_state: &UseStateHandle<Vec<Vec<i64>>>, player_turn: &UseStateHandle<bool>) {
-//     let game_board_state = game_board_state.clone();
-//     let player_turn = player_turn.clone();
-//     let player_clone = (*player_turn).clone();
-//
-//     if !player_clone {
-//         for col in 0..7 {
-//             let mut game_board_clone = (*game_board_state).clone();
-//             web_sys::console::log_1(&format!("Game: {:?}", game_board_clone).into());
-//             for row in 0..6 {  // Check from the bottom of the column
-//                 if game_board_clone[row][col] == 0 {
-//                     game_board_clone[row][col] = 2; // Assuming 2 for computer's disc
-//                     game_board_state.set(game_board_clone);
-//                     player_turn.set(true); // Switch back to player's turn after computer's move
-//                     break;
-//                 }
-//             }
-//         }
-//     }
-// }
-
 fn check_winner(game_board: Vec<Vec<i64>>) -> i64 {
 
     let rows = game_board.len();
@@ -137,6 +116,8 @@ fn game_board(props: &GameBoardProps) -> Html {
     let player_name = use_state(|| props.player_name.clone());
     let winner = use_state(|| "A".to_string());
     let difficulty_level = use_state(|| props.difficulty_level.clone());
+
+    // clone
     let game_board_state_clone = game_board_state.clone();
     let player_turn_clone = player_turn.clone();
     let game_is_clone_over = game_is_over.clone();

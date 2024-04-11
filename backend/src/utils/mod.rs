@@ -277,3 +277,21 @@ pub fn puff_connect4(game_board: Vec<Vec<i64>>, difficulty_level: String) -> i64
     let (_, opt_col) = minimax(&mut state, diff_level);
     return opt_col;
 }
+
+// TODO: find the best column to move in the given difficulty and board
+// the board looks like:
+// [0, 0, 0, 0, 0, 0]
+// [0, 0, 1, 0, 0, 0]
+// [0, 1, 2, 3, 4, 2]
+// [0, 3, 4, 2, 1, 0]
+// difficulty level is "Easy" or "Hard"
+// 1 for Human T
+// 2 for Human O
+// 3 for Puff T
+// 4 for Puff O
+// return the column number (from 0-5 total 6 columns) as 1st char
+// return the T(3) or O(4) as 3rd char, separated by ,
+// "1,3" means 1st column and T
+pub fn puff_toot(game_board: Vec<Vec<i64>>, difficulty_level: String) -> String {
+    "1,3".to_string()
+}

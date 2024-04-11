@@ -12,3 +12,9 @@ pub struct GameResult {
 pub struct ColResponse {
     pub column: i64,
 }
+
+#[derive(Debug, Clone, Deserialize, Serialize)]
+#[serde(crate = "rocket::serde")]
+pub struct TootResponse {
+    pub move_step: String,
+}
