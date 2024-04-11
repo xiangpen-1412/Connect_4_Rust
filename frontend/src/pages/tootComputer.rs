@@ -30,25 +30,33 @@ pub struct GameBoardProps {
     pub difficulty_level: String,
 }
 
-fn contains_toot_or_otto(sequence: &str) -> bool {
-    sequence.contains("TOOT") || sequence.contains("OTTO")
+fn contains_toot_or_otto(sequence: &str) -> i64 {
+    if sequence.contains("TOOT") {
+        1
+    } else if sequence.contains("OTTO") {
+        2
+    } else {
+        0
+    }
 }
 
-fn check_pattern_in_board(game_board: Vec<Vec<char>>) -> bool {
+fn check_pattern_in_board(game_board: Vec<Vec<char>>) -> i64 {
     let cols = game_board[0].len();
     let rows = game_board.len();
 
     for row in &game_board {
         let sequence: String = row.iter().collect();
-        if contains_toot_or_otto(&sequence) {
-            return true;
+        let win_or_not = contains_toot_or_otto(&sequence);
+        if win_or_not != 0 {
+            return win_or_not;
         }
     }
 
     for col in 0..cols {
         let column_sequence: String = game_board.iter().map(|row| row[col]).collect();
-        if contains_toot_or_otto(&column_sequence) {
-            return true;
+        let win_or_not = contains_toot_or_otto(&column_sequence);
+        if win_or_not != 0 {
+            return win_or_not;
         }
     }
 
@@ -57,8 +65,9 @@ fn check_pattern_in_board(game_board: Vec<Vec<char>>) -> bool {
         for i in 0..rows.min(cols - start_col) {
             diag_sequence.push(game_board[i][start_col + i]);
         }
-        if contains_toot_or_otto(&diag_sequence) {
-            return true;
+        let win_or_not = contains_toot_or_otto(&diag_sequence);
+        if win_or_not != 0 {
+            return win_or_not;
         }
     }
 
@@ -67,12 +76,12 @@ fn check_pattern_in_board(game_board: Vec<Vec<char>>) -> bool {
         for i in 0..rows.min(start_col + 1) {
             diag_sequence.push(game_board[i][start_col - i]);
         }
-        if contains_toot_or_otto(&diag_sequence) {
-            return true;
+        let win_or_not = contains_toot_or_otto(&diag_sequence);
+        if win_or_not != 0 {
+            return win_or_not;
         }
     }
-
-    false
+    0
 }
 
 fn num_2_char(cell: i64) -> char {
@@ -90,19 +99,17 @@ fn check_toot_winner(game_board: Vec<Vec<i64>>) -> i64 {
         .collect();
 
     let contain_pattern = check_pattern_in_board(char_board.clone());
-    let nonzero_count = char_board.iter().flatten().filter(|&&c| c != '0').count();
-    if (contain_pattern) {
-        match nonzero_count % 2 {
-            0 => {return 2;}
-            _ => {return 1;}
-        }
-    } else {
+
+    let mut nonzero_count= 0;
+    if contain_pattern == 0 {
+        nonzero_count = char_board.iter().flatten().filter(|&&c| c != '0').count();
         if nonzero_count == 24 {
-            return 3;
-        } else {
-            return 0;
+            return 3
         }
+        return 0
     }
+
+    contain_pattern
 }
 
 async fn post_game_toot_move(game_board: Vec<Vec<i64>>, difficulty_level: String) -> Result<String, reqwest::Error> {
